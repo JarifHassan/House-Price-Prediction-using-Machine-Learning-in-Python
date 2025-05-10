@@ -85,3 +85,13 @@ df_final = pd.concat([df_final, OH_cols], axis = 1)
 from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import train_test_split
 
+X = df_final.drop(['SalePrice'], axis = 1)
+Y = df_final['SalePrice']
+X_train, X_valid, Y_train, Y_valid = train_test_split(
+    X,Y,train_size=0.8, test_size=0.2, random_state=0
+)
+from sklearn import svm
+from sklearn.svm import SVC
+from sklearn.metrics import mean_absolute_percentage_error
+
+

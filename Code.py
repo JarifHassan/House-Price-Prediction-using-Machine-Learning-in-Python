@@ -54,3 +54,24 @@ for col in object_cols:
     index +=1
 
 
+dataset.drop(['Id'],
+    axis=1,
+    inplace= True)
+
+dataset['SalePrice'] = dataset['SalePrice'].fillna(
+    dataset['SalePrice'].mean()
+)
+
+new_dataset= dataset.dropna()
+
+new_dataset.isnull().sum()
+
+from sklearn.preprocessing import OneHotEncoder
+
+s = (new_dataset.dtypes == 'object')
+object_cols = list(s[s].index)
+print("Categorical variavbles:")
+print(object_cols)
+print('No. Of. categorical features:',
+      len(object_cols))
+

@@ -82,3 +82,6 @@ OH_cols.colums = OH_encoder.get_feature_names_out()
 df_final = new_dataset.drop(object_cols, axis=1)
 df_final = pd.concat([df_final, OH_cols], axis = 1)
 
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import train_test_split
+

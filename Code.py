@@ -75,3 +75,10 @@ print(object_cols)
 print('No. Of. categorical features:',
       len(object_cols))
 
+OH_encoder = OneHotEncoder(sparse_output= False, handle_unknown='ignore')
+OH_cols = pd.DataFrame(OH_encoder.fit_transform(new_dataset[object_cols]))
+OH_cols.index = new_dataset.index
+OH_cols.colums = OH_encoder.get_feature_names_out()
+df_final = new_dataset.drop(object_cols, axis=1)
+df_final = pd.concat([df_final, OH_cols], axis = 1)
+

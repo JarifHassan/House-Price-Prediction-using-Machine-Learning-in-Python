@@ -94,8 +94,14 @@ from sklearn import svm
 from sklearn.svm import SVC
 from sklearn.metrics import mean_absolute_percentage_error
 
+from sklearn.ensemble import RandomForestRegressor
+
+
+X_train.columns = X_train.columns.astype(str)
+X_valid.columns = X_valid.columns.astype(str)
 model_SVR = svm.SVR()
 model_SVR.fit(X_train,Y_train)
 Y_pred = model_SVR.predict(X_valid)
 
 print(mean_absolute_percentage_error(Y_valid, Y_pred))
+
